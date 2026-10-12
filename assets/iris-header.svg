@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="360" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+  <title id="title">iris — bring your BLE lights home</title>
+  <desc id="desc">A soft violet rainbow arch connects a home outline and a tiny circuit board on a dark ink background.</desc>
+  <defs>
+    <linearGradient id="spectrum" x1="0" x2="1"><stop stop-color="#e4ad7c"/><stop offset=".38" stop-color="#d291b5"/><stop offset=".7" stop-color="#a394d1"/><stop offset="1" stop-color="#7caeaf"/></linearGradient>
+    <radialGradient id="glow"><stop stop-color="#9b84c7" stop-opacity=".15"/><stop offset="1" stop-color="#9b84c7" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="1200" height="360" rx="22" fill="#171b27"/>
+  <ellipse cx="925" cy="175" rx="260" ry="210" fill="url(#glow)"/>
+  <path d="M40 305H1160" stroke="#323443"/>
+  <text x="67" y="72" fill="#aaa7bb" font-family="ui-monospace, SFMono-Regular, Consolas, monospace" font-size="14" letter-spacing="3">local light. two worlds.</text>
+  <text x="62" y="190" fill="#f1ece8" font-family="Georgia, serif" font-size="110" letter-spacing="-5">iris</text>
+  <text x="67" y="245" fill="#c7c2cc" font-family="system-ui, sans-serif" font-size="25">bring your BLE lights home.</text>
+  <g fill="none" stroke="url(#spectrum)" stroke-linecap="round">
+    <path d="M765 218a155 155 0 0 1 310 0" stroke-width="9"/>
+    <path d="M785 218a135 135 0 0 1 270 0" stroke-width="5" opacity=".6"/>
+    <path d="M804 218a116 116 0 0 1 232 0" stroke-width="3" opacity=".3"/>
+  </g>
+  <g fill="#171b27" stroke="#d0c5de" stroke-width="2.5" stroke-linejoin="round">
+    <path d="M743 234v-28l22-19 22 19v28h-17v-17h-10v17z"/>
+    <rect x="1058" y="199" width="34" height="42" rx="5"/>
+    <path d="M1065 199v-8m10 8v-8m10 8v-8m-20 50v8m10-8v8m10-8v8"/>
+    <rect x="1066" y="209" width="18" height="14" rx="2" fill="#a394d1" stroke="none"/>
+  </g>
+  <text x="67" y="333" fill="#8f90a4" font-family="ui-monospace, monospace" font-size="12" letter-spacing="1.5">MATTER / WI-FI / BLUETOOTH</text>
+  <text x="1013" y="333" fill="#8f90a4" font-family="ui-monospace, monospace" font-size="12" letter-spacing="1.5">ESP32-S3</text>
+</svg>

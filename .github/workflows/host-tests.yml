@@ -1,0 +1,19 @@
+name: host tests
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: [g++, clang++]
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - name: Test conversion, protocol, console and local tooling
+        env:
+          CXX: ${{ matrix.compiler }}
+        run: bash tools/test-host.sh

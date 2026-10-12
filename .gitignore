@@ -1,0 +1,28 @@
+.private/
+.env
+.env.*
+!.env.example
+build/
+.venv/
+.tools/
+sdkconfig
+sdkconfig.old
+__pycache__/
+diagnostic/build/
+diagnostic/sdkconfig
+diagnostic/sdkconfig.old
+managed_components/
+evidence/
+.DS_Store
+# Local credentials and device state, wherever accidentally placed.
+private_config.h
+pairing.txt
+*.bin
+*.elf
+*.map
+*.log
+*.queue
+.pytest_cache/
+
+# Publication-review metadata, never part of the public source tree.
+.publication/

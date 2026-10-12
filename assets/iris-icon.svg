@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title">
+  <title id="title">iris rainbow bridge</title>
+  <rect width="256" height="256" rx="56" fill="#171b27"/>
+  <g fill="none" stroke-linecap="round">
+    <path d="M49 163a79 79 0 0 1 158 0" stroke="#a394d1" stroke-width="15"/>
+    <path d="M70 163a58 58 0 0 1 116 0" stroke="#d291b5" stroke-width="10"/>
+    <path d="M89 163a39 39 0 0 1 78 0" stroke="#e4ad7c" stroke-width="6"/>
+  </g>
+  <circle cx="49" cy="185" r="8" fill="#7caeaf"/><circle cx="207" cy="185" r="8" fill="#7caeaf"/>
+</svg>
