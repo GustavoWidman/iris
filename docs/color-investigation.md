@@ -1,8 +1,10 @@
 # color investigation
 
 Apple Home control works on the tested setup. mixed colors are another matter.
-calibration is still neutral; this is the record of what we know, not a recipe
-for guessing channel gains.
+calibration is still neutral by default; this is the record of what we know,
+not a measured calibration. an optional [relative-balance experiment](experimental-relative-balance.md)
+is opt-in. version 3 was built, app-only flashed and tried through Apple Home
+on the same setup; see the [trial record](experimental-relative-balance.md#the-one-board-trial).
 
 ## software math vs. physical output
 
@@ -34,6 +36,8 @@ measurements or a portable calibration profile.
 | `(0,0,1)` | deep ocean blue |
 | `(0,0,128)` | same blue hue, much brighter |
 | `(128,21,0)` | slightly greenish yellow |
+| `(128,19,0)` | yellow, very slightly green/light |
+| `(120,18,0)` | decent yellow; preferred at this tested brightness |
 | `(128,8,0)` | rich orange |
 | `(128,16,1)` through `(128,16,8)` | warm / creamy white |
 | `(128,16,10)` through `(128,16,12)` | pale rose-gold / washed pink |
@@ -57,7 +61,9 @@ separate H/S or X/Y updates and the worker's write cadence may create transient
 intermediate colors. those are plausible bridge effects, not an explanation of
 all symptoms; problems that existed before the bridge need a broader diagnosis.
 
-no gains, gamma, channel permutation or power-frame change have been applied.
+the tested bridge now runs the opt-in version 3 red-context profile. existing
+gain/gamma/permutation hooks and power frames are unchanged. the public build
+still defaults to identity, not the experimental profile.
 there is no measured white point, gamut or calibrated color-temperature range.
 an RGB strip cannot produce a dedicated high-quality white emitter in software.
 

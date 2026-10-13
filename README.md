@@ -46,10 +46,13 @@ an ordinary `off` request once left the LEDs lit. exact `rgb 0 0 0` was confirme
 dark on this unit, but that isn't proof of controller power-off or a universal fix.
 observe the strip; don't use this for lighting you need to trust.
 
-mixed colors are nonlinear and still unresolved. a tiny blue value can make a
-surprisingly large difference. the XY conversion math has regression tests;
-physical color accuracy does not magically follow from that. calibration stays
-neutral. white balance and long-term reliability aren't established either.
+mixed colors are nonlinear. a tiny blue value can make a surprisingly large
+difference. an opt-in [relative-balance profile](docs/experimental-relative-balance.md)
+was built and tried through Apple Home on this setup: “not perfect, but pretty
+damn good.” i'll take it. that's one person's verdict, not calibrated colorimetry
+or a promise about your strip. identity is still the default; purple, dim mixtures,
+white temperature and long-term reliability aren't established. the XY conversion
+math has regression tests; physical color accuracy does not magically follow.
 
 no music mode, effects, OTA updates or cloud relay. a local Home setup worked
 without an Apple TV/HomePod, but that doesn't promise remote access, automations,

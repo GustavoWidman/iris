@@ -24,15 +24,15 @@ extern "C" {
 #include "color_math.h"
 #include "bj_led_protocol.h"
 #include "console_command.h"
-#include "led_calibration.h"
+#include "led_profile_config.h"
 #include "pairing_provider.h"
 using namespace esp_matter;
 using namespace chip::app::Clusters;
 static const char *TAG="BJ_BRIDGE";
 struct Desired {bool on=false;uint8_t level=13,h=0,s=0,mode=1;uint16_t x=20495,y=21561,mired=250;};
 static Desired desired;
-// Leave identity until red/green/blue/white physical measurements determine correction.
-static const LedCalibration led_calibration{};
+// Identity unless the explicit experimental build option is enabled.
+static const LedCalibration led_calibration=firmware_led_calibration();
 static portMUX_TYPE state_lock=portMUX_INITIALIZER_UNLOCKED;
 static uint32_t revision=0;
 // Counts only Matter-backed desired-state changes. Exact RGB test requests are never persisted.
