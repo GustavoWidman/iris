@@ -19,3 +19,24 @@ introduce autonomous color cycling, hidden serial access or resets into tests.
 firmware integration changes need a local SDK build and deliberate hardware
 verification beyond host CI. note what was not tested. There is no claim of
 Matter certification or support for every `BJ_LED`-named controller.
+
+## formatting
+
+keep code readable rather than compressed: four-space indentation, a 100-column
+limit, and expanded functions, branches and loops. `.clang-format` keeps include
+order and attribution comments intact. Python uses Ruff, shell scripts use
+shfmt, and CMake uses cmake-format; their settings are checked in alongside the
+source. workflow YAML uses Prettier with two-space indentation. from the repository root, with these formatters installed:
+
+```sh
+clang-format -i main/*.h main/*.cpp diagnostic/main/*.c tests/*.cpp tools/*.cpp
+clang-format -i examples/private_config.h.example
+ruff format tools tests
+shfmt -w -i 4 tools/*.sh
+cmake-format -i CMakeLists.txt main/CMakeLists.txt diagnostic/CMakeLists.txt diagnostic/main/CMakeLists.txt
+prettier --write --tab-width 2 --print-width 100 .github/workflows/*.yml
+```
+
+format first-party code only, not fetched SDKs or generated/private settings.
+run the host tests after formatting; source-contract tests should check routing,
+not depend on a particular choice of whitespace.

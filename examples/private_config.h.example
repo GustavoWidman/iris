@@ -6,7 +6,9 @@
 #define BRIDGE_WIFI_PASS ""
 #define BRIDGE_SETUP_PIN YOUR_UNIQUE_MATTER_PASSCODE
 #define BRIDGE_DISCRIMINATOR YOUR_RANDOM_12_BIT_DISCRIMINATOR
-#define BRIDGE_PAIR_SALT { /* sixteen random bytes */ }
+#define BRIDGE_PAIR_SALT                                                                           \
+    { /* sixteen random bytes */                                                                   \
+    }
 // Optional: select one BJ_LED when several exist. NimBLE byte order is reversed
 // relative to the usual displayed address; keep your address private.
 // #define BRIDGE_LED_ADDR { /* six bytes in NimBLE order */ }

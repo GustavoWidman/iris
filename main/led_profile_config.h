@@ -9,9 +9,9 @@
 #error "IRIS_EXPERIMENTAL_RELATIVE_BALANCE must be 0 or 1"
 #endif
 inline LedCalibration firmware_led_calibration() {
- LedCalibration calibration{};
+    LedCalibration calibration{};
 #if IRIS_EXPERIMENTAL_RELATIVE_BALANCE
- calibration.profile=LedColorProfile::ExperimentalRelativeBalance;
+    calibration.profile = LedColorProfile::ExperimentalRelativeBalance;
 #endif
- return calibration;
+    return calibration;
 }

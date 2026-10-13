@@ -6,8 +6,10 @@ int main() {
     using namespace bj_led_protocol;
 
     static_assert(kOff.size() == 5 && kOn.size() == 5);
-    static_assert(kOff[0] == 0x69 && kOff[1] == 0x96 && kOff[2] == 0x02 && kOff[3] == 0x01 && kOff[4] == 0x00);
-    static_assert(kOn[0] == 0x69 && kOn[1] == 0x96 && kOn[2] == 0x02 && kOn[3] == 0x01 && kOn[4] == 0x01);
+    static_assert(kOff[0] == 0x69 && kOff[1] == 0x96 && kOff[2] == 0x02 && kOff[3] == 0x01 &&
+                  kOff[4] == 0x00);
+    static_assert(kOn[0] == 0x69 && kOn[1] == 0x96 && kOn[2] == 0x02 && kOn[3] == 0x01 &&
+                  kOn[4] == 0x01);
 
     constexpr auto red = rgb(0xff, 0x00, 0x00);
     constexpr auto green = rgb(0x00, 0xff, 0x00);

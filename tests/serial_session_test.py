@@ -4,7 +4,9 @@ import os
 import pathlib
 import tempfile
 
-spec = importlib.util.spec_from_file_location("serial_session", pathlib.Path("tools/serial_session.py"))
+spec = importlib.util.spec_from_file_location(
+    "serial_session", pathlib.Path("tools/serial_session.py")
+)
 module = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(module)
 with tempfile.TemporaryDirectory() as temporary:

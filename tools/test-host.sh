@@ -16,15 +16,16 @@ done
 "$BUILD/relative_balance_enabled"
 printf 'PASS relative_balance_enabled\n'
 "${CXX:-c++}" -std=c++17 -Wall -Wextra -Werror tools/show-color-profile.cpp -o "$BUILD/show_color_profile"
-"$BUILD/show_color_profile" > "$BUILD/mappings.csv"
-test "$(wc -l < "$BUILD/mappings.csv")" -eq 43
+"$BUILD/show_color_profile" >"$BUILD/mappings.csv"
+test "$(wc -l <"$BUILD/mappings.csv")" -eq 43
 grep -qx 'yellow_source,120,120,0,120,18,0' "$BUILD/mappings.csv"
 grep -qx 'white_source,128,128,128,128,19,4' "$BUILD/mappings.csv"
 printf 'PASS hardware-free profile mapping report\n'
 # Reject invalid flags before any vendor SDK/build/hardware access.
 if "${CXX:-c++}" -std=c++17 -DIRIS_EXPERIMENTAL_RELATIVE_BALANCE=2 \
     tests/relative_balance_test.cpp -o "$BUILD/invalid_profile" 2>"$BUILD/invalid_profile.txt"; then
-    printf 'Invalid profile flag unexpectedly compiled\n' >&2; exit 1
+    printf 'Invalid profile flag unexpectedly compiled\n' >&2
+    exit 1
 fi
 grep -q 'must be 0 or 1' "$BUILD/invalid_profile.txt"
 printf 'PASS invalid profile flag rejected\n'

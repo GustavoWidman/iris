@@ -5,6 +5,7 @@ An optional owner-only command queue can feed a *single already-open* serial
 session. It is intentionally limited to the temporary RGB-test commands, so
 it cannot factory-reset, commission, or alter networking.
 """
+
 import argparse
 import os
 import math
@@ -13,7 +14,9 @@ import re
 import stat
 import time
 
-QUEUE_COMMAND = re.compile(r"(?:rgb (?:0|[1-9][0-9]{0,1}|1[0-9]{2}|2[0-4][0-9]|25[0-5]) (?:0|[1-9][0-9]{0,1}|1[0-9]{2}|2[0-4][0-9]|25[0-5]) (?:0|[1-9][0-9]{0,1}|1[0-9]{2}|2[0-4][0-9]|25[0-5])|resume|status)")
+QUEUE_COMMAND = re.compile(
+    r"(?:rgb (?:0|[1-9][0-9]{0,1}|1[0-9]{2}|2[0-4][0-9]|25[0-5]) (?:0|[1-9][0-9]{0,1}|1[0-9]{2}|2[0-4][0-9]|25[0-5]) (?:0|[1-9][0-9]{0,1}|1[0-9]{2}|2[0-4][0-9]|25[0-5])|resume|status)"
+)
 
 
 def owner_only_regular(path: pathlib.Path) -> None:
@@ -68,7 +71,11 @@ def main() -> None:
     parser.add_argument("--seconds", type=float, default=60)
     parser.add_argument("--output", default="evidence/serial.log")
     parser.add_argument("--command", action="append", default=[], help="SECONDS:COMMAND")
-    parser.add_argument("--command-queue", type=pathlib.Path, help="existing mode-0600 local queue; allowed: rgb R G B, resume, status")
+    parser.add_argument(
+        "--command-queue",
+        type=pathlib.Path,
+        help="existing mode-0600 local queue; allowed: rgb R G B, resume, status",
+    )
     args = parser.parse_args()
     if not math.isfinite(args.seconds) or not 0 < args.seconds <= 3600:
         parser.error("--seconds must be finite and between 0 and 3600")
@@ -85,6 +92,7 @@ def main() -> None:
         owner_only_regular(args.command_queue)
     destination = pathlib.Path(args.output)
     import serial  # Only after argument validation, never for --help.
+
     # Configure modem lines before opening; opening with defaults can reset ESP32.
     connection = serial.Serial(port=None, baudrate=115200, timeout=0.25, exclusive=True)
     connection.dtr = False
@@ -114,7 +122,13 @@ def main() -> None:
     text = destination.read_text(errors="replace")
     clean = re.sub(r"\x1b\[[0-9;]*m", "", text)
     for line in clean.splitlines():
-        if ("BJ_" in line or "BJ_LED" in line or "GATT uuid" in line or "panic" in line or "assert" in line) and "password" not in line.lower():
+        if (
+            "BJ_" in line
+            or "BJ_LED" in line
+            or "GATT uuid" in line
+            or "panic" in line
+            or "assert" in line
+        ) and "password" not in line.lower():
             print(line)
     print("Captured", destination)
 
